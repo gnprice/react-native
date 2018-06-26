@@ -381,7 +381,6 @@ public abstract class ReactBaseTextShadowNode extends LayoutShadowNode {
       mAllowFontScaling = allowFontScaling;
       setFontSize(mFontSizeInput);
       setLineHeight(mLineHeightInput);
-      setLetterSpacing(mLetterSpacingInput);
       markUpdated();
     }
   }
