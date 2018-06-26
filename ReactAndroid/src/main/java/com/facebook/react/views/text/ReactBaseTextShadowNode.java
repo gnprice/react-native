@@ -118,14 +118,6 @@ public abstract class ReactBaseTextShadowNode extends LayoutShadowNode {
             new SetSpanOperation(
                 start, end, new BackgroundColorSpan(textShadowNode.mBackgroundColor)));
       }
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        if (textShadowNode.mLetterSpacing != Float.NaN) {
-          ops.add(new SetSpanOperation(
-            start,
-            end,
-            new CustomLetterSpacingSpan(textShadowNode.mLetterSpacing)));
-        }
-      }
       if (textShadowNode.mFontSize != UNSET) {
         ops.add(new SetSpanOperation(start, end, new AbsoluteSizeSpan(textShadowNode.mFontSize)));
       }
@@ -381,6 +373,7 @@ public abstract class ReactBaseTextShadowNode extends LayoutShadowNode {
       mAllowFontScaling = allowFontScaling;
       setFontSize(mFontSizeInput);
       setLineHeight(mLineHeightInput);
+      setLetterSpacing(mLetterSpacingInput);
       markUpdated();
     }
   }
