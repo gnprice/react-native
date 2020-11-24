@@ -20,7 +20,7 @@ import type {ViewToken} from './ViewabilityHelper';
 
 type Item = any;
 
-export type SectionBase<SectionItemT> = {
+export type SectionBase<SectionItemT> = $ReadOnly<{
   /**
    * The data for rendering items in this section.
    */
@@ -46,7 +46,7 @@ export type SectionBase<SectionItemT> = {
   ItemSeparatorComponent?: ?React.ComponentType<any>,
   keyExtractor?: (item: SectionItemT, index?: ?number) => string,
   ...
-};
+}>;
 
 type RequiredProps<SectionT: SectionBase<any>> = {|
   sections: $ReadOnlyArray<SectionT>,

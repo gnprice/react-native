@@ -44,6 +44,26 @@ module.exports = {
     return <SectionList renderItem={renderMyListItem} sections={sections} />;
   },
 
+  testGoodDataWithExplicitSectionType(): React.Node {
+    type Item = {| key: number, title: string |};
+    type Section = {| key: string, data: $ReadOnlyArray<Item> |};
+    const sections: $ReadOnlyArray<Section> = [
+      { key: 'a', data: [{ key: 1, title: 'foo' }] },
+    ];
+    return <SectionList renderItem={renderMyListItem} sections={sections} />;
+  },
+
+  testGoodDataWithHeterogeneousSections(): React.Node {
+    type Section =
+      | {| +data: $ReadOnlyArray<string>, extra: number |}
+      | {| +data: $ReadOnlyArray<number>, other: string |};
+    const sections: $ReadOnlyArray<Section> = [
+      { data: ['a'], extra: 123 },
+      { data: [234], other: 'b' },
+    ];
+    return <SectionList sections={sections} />;
+  },
+
   testBadRenderItemFunction(): $TEMPORARY$array<React.Node> {
     const sections = [
       {
